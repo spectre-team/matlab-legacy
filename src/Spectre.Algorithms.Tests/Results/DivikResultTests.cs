@@ -21,7 +21,7 @@ using System;
 using System.IO;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using Spectre.AlgorithmsCli.Methods;
+using Spectre.Algorithms.Methods;
 using Spectre.Algorithms.Parameterization;
 using Spectre.Algorithms.Results;
 using Spectre.Data.Datasets;
