@@ -18,9 +18,9 @@
 */
 
 using System;
+using Spectre.Algorithms.Methods;
 using Spectre.Algorithms.Parameterization;
 using Spectre.Algorithms.Results;
-using Spectre.AlgorithmsCli.Methods;
 using Spectre.Data.Datasets;
 using Spectre.Service.Abstract;
 

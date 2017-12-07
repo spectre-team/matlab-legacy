@@ -1,4 +1,4 @@
-version: 2.24.7.{build}
+version: 3.0.0.{build}
 # enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
@@ -17,7 +17,6 @@ environment:
 configuration:
   - Debug
   - Release
-services: iis
 
 # skip branch build if there is an active pull request
 skip_branch_with_pr: true
@@ -39,25 +38,17 @@ nuget:
   project_feed: false
 
 install:
-- cmd: C:\projects\spectre\scripts\restore_nugets.bat
-- ps: C:\projects\spectre\scripts\InstallNode.ps1
+- cmd: C:\projects\DiviK-standalone-client\scripts\restore_nugets.bat
 
 build_script:
-- cmd: msbuild "C:\projects\spectre\src\Spectre.sln" /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM% /m /verbosity:quiet /p:DeployOnBuild=true /p:PublishProfile=%CONFIGURATION% /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-- cmd: C:\projects\spectre\scripts\build_ng_client.bat %CONFIGURATION%
+- cmd: msbuild "C:\projects\DiviK-standalone-client\src\DiviK-standalone-client.sln" /p:Configuration=%CONFIGURATION% /p:Platform=%PLATFORM% /m /verbosity:quiet /p:DeployOnBuild=true /p:PublishProfile=%CONFIGURATION% /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 after_build:
-- ps: C:\projects\spectre\scripts\BindPageToIisAndCreateDataDir.ps1 -AppVeyor
-- cmd: C:\projects\spectre\scripts\package_project.bat DiviK Spectre.DivikWpfClient
-- cmd: C:\projects\spectre\scripts\package_project.bat DataValidatorApp Spectre.DataValidatorApp
-- cmd: C:\projects\spectre\scripts\package_project.bat DivikResultConverter Spectre.DivikResultConverter
-- cmd: C:\projects\spectre\scripts\package_web_project.bat WebAPI Spectre
-- cmd: C:\projects\spectre\scripts\package_angular_client.bat
+- cmd: C:\projects\DiviK-standalone-client\scripts\package_project.bat DiviK Spectre.DivikWpfClient
+- cmd: C:\projects\DiviK-standalone-client\scripts\package_project.bat DataValidatorApp Spectre.DataValidatorApp
+- cmd: C:\projects\DiviK-standalone-client\scripts\package_project.bat DivikResultConverter Spectre.DivikResultConverter
 
 test_script:
-- cmd: C:\projects\spectre\scripts\test_native_code.bat
-- cmd: C:\projects\spectre\scripts\test_dotnet.bat --except Algorithm
-- cmd: C:\projects\spectre\scripts\test_frontend.bat
-- cmd: C:\projects\spectre\scripts\test_frontend_e2e.bat
+- cmd: C:\projects\DiviK-standalone-client\scripts\test_dotnet.bat --except Algorithm
 
 artifacts:
 - path: DiviK-$(configuration).zip
@@ -66,46 +57,29 @@ artifacts:
   name: DataValidatorExecutables
 - path: DivikResultConverter-$(configuration).zip
   name: DivikResultConverterExecutables
-- path: WebClient-$(configuration).zip
-  name: WebClient
-- path: WebAPI-$(configuration).zip
-  name: WebAPI
 
 deploy:
 - provider: GitHub
-  release: Spectre-v$(appveyor_build_version)
+  release: DiviK-standalone-client-v$(appveyor_build_version)
   auth_token:
     secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
   artifact: DivikExecutables
   draft: true
 - provider: GitHub
-  release: Spectre-v$(appveyor_build_version)
+  release: DiviK-standalone-client-v$(appveyor_build_version)
   auth_token:
     secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
   artifact: DataValidatorExecutables
   draft: true
 - provider: GitHub
-  release: Spectre-v$(appveyor_build_version)
+  release: DiviK-standalone-client-v$(appveyor_build_version)
   auth_token:
     secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
   artifact: DivikResultConverterExecutables
   draft: true
-- provider: GitHub
-  release: Spectre-v$(appveyor_build_version)
-  auth_token:
-    secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
-  artifact: WebClient
-  draft: true
-- provider: GitHub
-  release: Spectre-v$(appveyor_build_version)
-  auth_token:
-    secure: dQadz+smqtuxpigZ/LmrUKyA0uVZ5kgljKntyoHEdobTycbeMywbfmiJtZPNcOQ2
-  artifact: WebAPI
-  draft: true
 
 on_finish:
 #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-- cmd: C:\projects\spectre\scripts\upload-frontend-test-results.bat
 
 notifications:
 # this publishes to Continuous Integration channel in Glip
@@ -117,7 +91,7 @@ notifications:
   body: >-
     {
       "icon": "https://www.appveyor.com/assets/img/appveyor-logo-256.png",
-      "activity": "AppVeyor",
+      "activity": "AppVeyor for DiviK-standalone-client",
       "title": "Build {{buildVersion}} **{{#failed}}failed{{/failed}}{{#passed}}passed{{/passed}}** in {{duration}}",
       "body": "{{#isPullRequest}}Pull request: [#{{pullRequestId}}](https://github.com/spectre-team/spectre/pull/{{pullRequestId}})\n{{/isPullRequest}}Branch: [{{branch}}](https://github.com/spectre-team/spectre/tree/{{branch}})\nCommit: [{{commitId}} {{commitMessage}}](https://github.com/spectre-team/spectre/commit/{{commitId}})\nAuthor: {{commitAuthor}}\n[Build details]({{buildUrl}})"
     }
