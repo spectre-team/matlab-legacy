@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Spectre.Algorithms.Methods;
 using Spectre.Algorithms.Parameterization;
 using Spectre.Algorithms.Results;
 using Spectre.Data.Datasets;
@@ -67,9 +68,9 @@ namespace Spectre.DivikWpfClient.ViewModel
         private RelayCommand _windowCloseHandle;
 
         /// <summary>
-        ///     Private singleton of <see cref="IDivikService" />.
+        ///     Private instance of <see cref="Segmentation" />.
         /// </summary>
-        private IDivikService _divikService;
+        private Segmentation _divikService;
 
         /// <summary>
         ///     Cancellation token source for divik calculation task.
@@ -506,7 +507,7 @@ namespace Spectre.DivikWpfClient.ViewModel
                             MessageBox.Show(text: "Divik was successfully cancelled.", caption: "Cancelled!");
                             return;
                         }
-                        _divikService = _divikService ?? new Service.ServiceFactory().GetDivikService();
+                        _divikService = _divikService ?? new Segmentation();
                         var fileName = "\\divik-result-"
                                        + DateTime.Now.ToString(format: "yyyy-MM-dd-HH-mm-ss")
                                        + ".json";
@@ -521,7 +522,7 @@ namespace Spectre.DivikWpfClient.ViewModel
                         {
                             Log = string.Empty;
                             consoleCapture.Written += (sender, appended) => Log += appended;
-                            _divikService.CalculateDivik(
+                            _divikService.Divik(
                                     dataset: GetDatasetFromVm(),
                                     options: GetDivikOptionsFromVm())
                                 .Save(path: OutputPath + fileName, indentation: PrettyPrint);
