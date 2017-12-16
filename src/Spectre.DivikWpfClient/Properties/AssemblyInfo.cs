@@ -9,11 +9,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Spectre.DivikWpfClient")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Standalone client for DiviK algorithm")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("The Spectre Team")]
 [assembly: AssemblyProduct("Spectre.DivikWpfClient")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright © 2017 Spectre")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
