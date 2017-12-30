@@ -6,46 +6,17 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Algorithms", "Spectre.Algorithms\Spectre.Algorithms.csproj", "{9A886AEC-58DB-410D-91B9-C62E157501FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Algorithms.Tests", "Spectre.Algorithms.Tests\Spectre.Algorithms.Tests.csproj", "{BBF6329D-7BEC-494E-9FC9-B24B12D94EA0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{287A1A8D-C029-4D47-96BC-755C91B7985D} = {287A1A8D-C029-4D47-96BC-755C91B7985D}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data", "Spectre.Data\Spectre.Data.csproj", "{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Data.Tests", "Spectre.Data.Tests\Spectre.Data.Tests.csproj", "{01391E76-3D20-4B4B-B727-2A133B35A144}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Mvvm", "Spectre.Mvvm\Spectre.Mvvm.csproj", "{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Mvvm.Tests", "Spectre.Mvvm.Tests\Spectre.Mvvm.Tests.csproj", "{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{D3C36686-9667-48B2-A14B-FF46E6350A51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.DivikWpfClient", "Spectre.DivikWpfClient\Spectre.DivikWpfClient.csproj", "{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{287A1A8D-C029-4D47-96BC-755C91B7985D} = {287A1A8D-C029-4D47-96BC-755C91B7985D}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service", "Spectre.Service\Spectre.Service.csproj", "{287A1A8D-C029-4D47-96BC-755C91B7985D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Service.Tests", "Spectre.Service.Tests\Spectre.Service.Tests.csproj", "{1D79FD14-1DF4-4AED-94DF-62E595206DEF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9660DC51-B40B-454B-84B7-7FF830DA2D34}"
 	ProjectSection(SolutionItems) = preProject
 		CSharpCodingConvention.ruleset = CSharpCodingConvention.ruleset
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database", "Spectre.Database\Spectre.Database.csproj", "{B5B60F79-653C-4E41-9721-06C478CE9E7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Database.Tests", "Spectre.Database.Tests\Spectre.Database.Tests.csproj", "{2D5AD568-F2EE-4B8C-AF81-2C46EB45B0ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.Dependencies", "Spectre.Dependencies\Spectre.Dependencies.csproj", "{2B9F4DFD-C222-477A-9107-1A3C356002A4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.DataValidatorApp", "Spectre.DataValidatorApp\Spectre.DataValidatorApp.csproj", "{3D932849-312C-473C-B74C-ABD1F11A0739}"
-	ProjectSection(ProjectDependencies) = postProject
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC} = {70C87AF7-3189-4F6C-AC85-93309CF7CFDC}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spectre.DivikResultConverter", "Spectre.DivikResultConverter\Spectre.DivikResultConverter.csproj", "{74E04873-BB6F-4115-841D-50C162928B19}"
 EndProject
@@ -63,46 +34,10 @@ Global
 		{BBF6329D-7BEC-494E-9FC9-B24B12D94EA0}.Debug|x64.Build.0 = Debug|x64
 		{BBF6329D-7BEC-494E-9FC9-B24B12D94EA0}.Release|x64.ActiveCfg = Release|x64
 		{BBF6329D-7BEC-494E-9FC9-B24B12D94EA0}.Release|x64.Build.0 = Release|x64
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}.Debug|x64.ActiveCfg = Debug|x64
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}.Debug|x64.Build.0 = Debug|x64
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}.Release|x64.ActiveCfg = Release|x64
-		{70C87AF7-3189-4F6C-AC85-93309CF7CFDC}.Release|x64.Build.0 = Release|x64
-		{01391E76-3D20-4B4B-B727-2A133B35A144}.Debug|x64.ActiveCfg = Debug|x64
-		{01391E76-3D20-4B4B-B727-2A133B35A144}.Debug|x64.Build.0 = Debug|x64
-		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|x64.ActiveCfg = Release|x64
-		{01391E76-3D20-4B4B-B727-2A133B35A144}.Release|x64.Build.0 = Release|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Debug|x64.ActiveCfg = Debug|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Debug|x64.Build.0 = Debug|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Release|x64.ActiveCfg = Release|x64
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE}.Release|x64.Build.0 = Release|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Debug|x64.ActiveCfg = Debug|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Debug|x64.Build.0 = Debug|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Release|x64.ActiveCfg = Release|x64
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC}.Release|x64.Build.0 = Release|x64
 		{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C}.Debug|x64.ActiveCfg = Debug|x64
 		{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C}.Debug|x64.Build.0 = Debug|x64
 		{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C}.Release|x64.ActiveCfg = Release|x64
 		{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C}.Release|x64.Build.0 = Release|x64
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|x64.ActiveCfg = Debug|x64
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Debug|x64.Build.0 = Debug|x64
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Release|x64.ActiveCfg = Release|x64
-		{287A1A8D-C029-4D47-96BC-755C91B7985D}.Release|x64.Build.0 = Release|x64
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Debug|x64.ActiveCfg = Debug|x64
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Debug|x64.Build.0 = Debug|x64
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Release|x64.ActiveCfg = Release|x64
-		{1D79FD14-1DF4-4AED-94DF-62E595206DEF}.Release|x64.Build.0 = Release|x64
-		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Debug|x64.ActiveCfg = Debug|x64
-		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Debug|x64.Build.0 = Debug|x64
-		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Release|x64.ActiveCfg = Release|x64
-		{B5B60F79-653C-4E41-9721-06C478CE9E7C}.Release|x64.Build.0 = Release|x64
-		{2D5AD568-F2EE-4B8C-AF81-2C46EB45B0ED}.Debug|x64.ActiveCfg = Debug|x64
-		{2D5AD568-F2EE-4B8C-AF81-2C46EB45B0ED}.Debug|x64.Build.0 = Debug|x64
-		{2D5AD568-F2EE-4B8C-AF81-2C46EB45B0ED}.Release|x64.ActiveCfg = Release|x64
-		{2D5AD568-F2EE-4B8C-AF81-2C46EB45B0ED}.Release|x64.Build.0 = Release|x64
-		{2B9F4DFD-C222-477A-9107-1A3C356002A4}.Debug|x64.ActiveCfg = Debug|x64
-		{2B9F4DFD-C222-477A-9107-1A3C356002A4}.Debug|x64.Build.0 = Debug|x64
-		{2B9F4DFD-C222-477A-9107-1A3C356002A4}.Release|x64.ActiveCfg = Debug|x64
-		{2B9F4DFD-C222-477A-9107-1A3C356002A4}.Release|x64.Build.0 = Debug|x64
 		{3D932849-312C-473C-B74C-ABD1F11A0739}.Debug|x64.ActiveCfg = Debug|x64
 		{3D932849-312C-473C-B74C-ABD1F11A0739}.Debug|x64.Build.0 = Debug|x64
 		{3D932849-312C-473C-B74C-ABD1F11A0739}.Release|x64.ActiveCfg = Release|x64
@@ -116,8 +51,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2D24F1E7-18D4-4FC0-9E4F-2F32FF27FCCE} = {7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}
-		{23A97D0F-B6D9-4B67-84FE-4B52EA7D82EC} = {7EAC5FD7-C9CD-42E8-A24B-3665E854F4CD}
 		{F518ED4B-ADE0-4B5C-A01B-48D9FA216E0C} = {D3C36686-9667-48B2-A14B-FF46E6350A51}
 		{3D932849-312C-473C-B74C-ABD1F11A0739} = {D3C36686-9667-48B2-A14B-FF46E6350A51}
 		{74E04873-BB6F-4115-841D-50C162928B19} = {D3C36686-9667-48B2-A14B-FF46E6350A51}
