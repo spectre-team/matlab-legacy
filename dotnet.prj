@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1298587968" file=".\algorithms.prj" location="." name="algorithms" preferred-package-location="${PROJECT_ROOT}\algorithms-compile\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration build-checksum="1298587968" file=".\dotnet.prj" location="." name="algorithms" preferred-package-location="${PROJECT_ROOT}\algorithms-compile\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>MsiAlgorithms</param.appname>
     <param.icon />
     <param.icons />
@@ -35,9 +35,9 @@ A. Polanski, M. Marczyk, M. Pietrowska, P. Widlak and J. Polanska, "Signal parti
     <param.web.mcr>false</param.web.mcr>
     <param.package.mcr>true</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
-    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.web.mcr.name>MsiAlgorithmsInstaller_web</param.web.mcr.name>
     <param.package.mcr.name>algorithms_matlab_runtime</param.package.mcr.name>
-    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.no.mcr.name>MsiAlgorithmsInstaller_app</param.no.mcr.name>
     <param.windows.command.prompt>true</param.windows.command.prompt>
     <param.create.log>false</param.create.log>
     <param.log.file />
@@ -90,54 +90,54 @@ A. Polanski, M. Marczyk, M. Pietrowska, P. Widlak and J. Polanska, "Signal parti
       <param.net.saved.interface />
     </unset>
     <fileset.exports>
-      <file>${PROJECT_ROOT}\apply_gmm.m</file>
-      <file>${PROJECT_ROOT}\dependencies\fetch_thresholds.m</file>
-      <file>${PROJECT_ROOT}\DiviK\libs\divik_library\divik.m</file>
-      <file>${PROJECT_ROOT}\estimate_gmm.m</file>
-      <file>${PROJECT_ROOT}\load_divik_result.m</file>
-      <file>${PROJECT_ROOT}\merge_gmm_model_components.m</file>
-      <file>${PROJECT_ROOT}\pafft.m</file>
-      <file>${PROJECT_ROOT}\reduce_gmm_by_component_area.m</file>
-      <file>${PROJECT_ROOT}\reduce_gmm_by_component_height.m</file>
-      <file>${PROJECT_ROOT}\remove_baseline.m</file>
-      <file>${PROJECT_ROOT}\ROI_approximation\summarize_similarity_classes_binding.m</file>
-      <file>${PROJECT_ROOT}\ticnorm.m</file>
+      <file>${PROJECT_ROOT}\src\apply_gmm.m</file>
+      <file>${PROJECT_ROOT}\src\dependencies\fetch_thresholds.m</file>
+      <file>${PROJECT_ROOT}\src\DiviK\libs\divik_library\divik.m</file>
+      <file>${PROJECT_ROOT}\src\estimate_gmm.m</file>
+      <file>${PROJECT_ROOT}\src\load_divik_result.m</file>
+      <file>${PROJECT_ROOT}\src\merge_gmm_model_components.m</file>
+      <file>${PROJECT_ROOT}\src\pafft.m</file>
+      <file>${PROJECT_ROOT}\src\reduce_gmm_by_component_area.m</file>
+      <file>${PROJECT_ROOT}\src\reduce_gmm_by_component_height.m</file>
+      <file>${PROJECT_ROOT}\src\remove_baseline.m</file>
+      <file>${PROJECT_ROOT}\src\ROI_approximation\summarize_similarity_classes_binding.m</file>
+      <file>${PROJECT_ROOT}\src\ticnorm.m</file>
     </fileset.exports>
     <fileset.classes>
       <entity.package name="">
         <entity.class name="Preprocessing">
-          <file>${PROJECT_ROOT}\pafft.m</file>
-          <file>${PROJECT_ROOT}\remove_baseline.m</file>
-          <file>${PROJECT_ROOT}\ticnorm.m</file>
+          <file>${PROJECT_ROOT}\src\pafft.m</file>
+          <file>${PROJECT_ROOT}\src\remove_baseline.m</file>
+          <file>${PROJECT_ROOT}\src\ticnorm.m</file>
         </entity.class>
         <entity.class name="GmmModelling">
-          <file>${PROJECT_ROOT}\apply_gmm.m</file>
-          <file>${PROJECT_ROOT}\estimate_gmm.m</file>
-          <file>${PROJECT_ROOT}\merge_gmm_model_components.m</file>
-          <file>${PROJECT_ROOT}\reduce_gmm_by_component_area.m</file>
-          <file>${PROJECT_ROOT}\reduce_gmm_by_component_height.m</file>
+          <file>${PROJECT_ROOT}\src\apply_gmm.m</file>
+          <file>${PROJECT_ROOT}\src\estimate_gmm.m</file>
+          <file>${PROJECT_ROOT}\src\merge_gmm_model_components.m</file>
+          <file>${PROJECT_ROOT}\src\reduce_gmm_by_component_area.m</file>
+          <file>${PROJECT_ROOT}\src\reduce_gmm_by_component_height.m</file>
         </entity.class>
         <entity.class name="Segmentation">
-          <file>${PROJECT_ROOT}\DiviK\libs\divik_library\divik.m</file>
-          <file>${PROJECT_ROOT}\load_divik_result.m</file>
+          <file>${PROJECT_ROOT}\src\DiviK\libs\divik_library\divik.m</file>
+          <file>${PROJECT_ROOT}\src\load_divik_result.m</file>
         </entity.class>
         <entity.class name="GmmFiltering">
-          <file>${PROJECT_ROOT}\dependencies\fetch_thresholds.m</file>
+          <file>${PROJECT_ROOT}\src\dependencies\fetch_thresholds.m</file>
         </entity.class>
         <entity.class name="RoiApproximation">
-          <file>${PROJECT_ROOT}\ROI_approximation\summarize_similarity_classes_binding.m</file>
+          <file>${PROJECT_ROOT}\src\ROI_approximation\summarize_similarity_classes_binding.m</file>
         </entity.class>
       </entity.package>
     </fileset.classes>
     <fileset.resources>
-      <file>${PROJECT_ROOT}\dependencies</file>
-      <file>${PROJECT_ROOT}\DiviK\libs</file>
-      <file>${PROJECT_ROOT}\GMM</file>
-      <file>${PROJECT_ROOT}\load_divik_result.m</file>
-      <file>${PROJECT_ROOT}\ROI_approximation</file>
+      <file>${PROJECT_ROOT}\src\dependencies</file>
+      <file>${PROJECT_ROOT}\src\DiviK\libs</file>
+      <file>${PROJECT_ROOT}\src\GMM</file>
+      <file>${PROJECT_ROOT}\src\load_divik_result.m</file>
+      <file>${PROJECT_ROOT}\src\ROI_approximation</file>
     </fileset.resources>
     <fileset.depfun>
-      <file>${PROJECT_ROOT}\adaptive_PAFFT.m</file>
+      <file>${PROJECT_ROOT}\src\adaptive_PAFFT.m</file>
     </fileset.depfun>
     <fileset.package />
     <build-deliverables>
