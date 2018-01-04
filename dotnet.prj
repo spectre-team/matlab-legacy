@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1298587968" file=".\dotnet.prj" location="." name="algorithms" preferred-package-location="${PROJECT_ROOT}\algorithms-compile\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration build-checksum="1298587968" file=".\dotnet.prj" location="." name="algorithms" preferred-package-location="${PROJECT_ROOT}\build\dotnet\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>MsiAlgorithms</param.appname>
     <param.icon />
     <param.icons />
@@ -21,10 +21,10 @@ A. Polanski, M. Marczyk, M. Pietrowska, P. Widlak and J. Polanska, "Signal parti
     <param.logo />
     <param.install.notes />
     <param.target.install.notes />
-    <param.intermediate>${PROJECT_ROOT}\algorithms-compile\for_testing</param.intermediate>
-    <param.files.only>${PROJECT_ROOT}\algorithms-compile\for_redistribution_files_only</param.files.only>
-    <param.output>${PROJECT_ROOT}\algorithms-compile\for_redistribution</param.output>
-    <param.logdir>${PROJECT_ROOT}\algorithms-compile</param.logdir>
+    <param.intermediate>${PROJECT_ROOT}\build\dotnet\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\build\dotnet\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\build\dotnet\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\build\dotnet</param.logdir>
     <param.enable.clean.build>false</param.enable.clean.build>
     <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
@@ -141,10 +141,10 @@ A. Polanski, M. Marczyk, M. Pietrowska, P. Widlak and J. Polanska, "Signal parti
     </fileset.depfun>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\algorithms-compile\for_testing" name="MatlabAlgorithmsNative.dll" optional="false">${PROJECT_ROOT}\algorithms-compile\for_testing\MatlabAlgorithmsNative.dll</file>
-      <file location="${PROJECT_ROOT}\algorithms-compile\for_testing" name="MatlabAlgorithms_overview.html" optional="false">${PROJECT_ROOT}\algorithms-compile\for_testing\MatlabAlgorithms_overview.html</file>
-      <file location="${PROJECT_ROOT}\algorithms-compile\for_testing" name="MatlabAlgorithms.dll" optional="false">${PROJECT_ROOT}\algorithms-compile\for_testing\MatlabAlgorithms.dll</file>
-      <file location="${PROJECT_ROOT}\algorithms-compile\for_testing" name="readme.txt" optional="true">${PROJECT_ROOT}\algorithms-compile\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\build\dotnet\for_testing" name="MatlabAlgorithmsNative.dll" optional="false">${PROJECT_ROOT}\build\dotnet\for_testing\MatlabAlgorithmsNative.dll</file>
+      <file location="${PROJECT_ROOT}\build\dotnet\for_testing" name="MatlabAlgorithms_overview.html" optional="false">${PROJECT_ROOT}\build\dotnet\for_testing\MatlabAlgorithms_overview.html</file>
+      <file location="${PROJECT_ROOT}\build\dotnet\for_testing" name="MatlabAlgorithms.dll" optional="false">${PROJECT_ROOT}\build\dotnet\for_testing\MatlabAlgorithms.dll</file>
+      <file location="${PROJECT_ROOT}\build\dotnet\for_testing" name="readme.txt" optional="true">${PROJECT_ROOT}\build\dotnet\for_testing\readme.txt</file>
     </build-deliverables>
     <workflow />
     <matlab>
