@@ -65,13 +65,13 @@ right = x>B(2);
 del = left | right;
 x_corr = x(~del);
 
-if draw
-    disp([num2str(sum(left)) ' left tail outliers removed.'])
-    disp([num2str(sum(right)) ' right tail outliers removed.'])
-    figure; hist(x,sqrt(length(x))); hold on;
-    plot([B(1),B(1)],ylim,'r'); plot([B(2),B(2)],ylim,'r')
-    xlabel('Data'); ylabel('Counts'); title([num2str(sum(del)) ' outliers removed'])
-end
+% if draw
+%     disp([num2str(sum(left)) ' left tail outliers removed.'])
+%     disp([num2str(sum(right)) ' right tail outliers removed.'])
+%     figure; hist(x,sqrt(length(x))); hold on;
+%     plot([B(1),B(1)],ylim,'r'); plot([B(2),B(2)],ylim,'r')
+%     xlabel('Data'); ylabel('Counts'); title([num2str(sum(del)) ' outliers removed'])
+% end
 
 function y=iqr(x)
 y = quantile(x,0.75) - quantile(x,0.25);

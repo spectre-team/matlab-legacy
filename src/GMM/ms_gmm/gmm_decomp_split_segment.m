@@ -149,26 +149,25 @@ function [ww_pick,mu_pick,sig_pick]=gmm_decomp_split_segment(mz,y_bas,Splitt_v,s
        mu_pick(kkpick)=mu_pp(kkpick);
        ww_pick(kkpick)=ww_pp(kkpick);
        sig_pick(kkpick)=sig_pp(kkpick);
-    end  
-   
-    %%%%%%%%%%%%%%%%%%%%%%%%%%   
-    %%%%%%%%%%%%%%%%%%%% plots
-    if DRAW==1
-       figure(1)
-       subplot(2,1,1)
-       hold off
-       plot(mz_out,y_out,'k') 
-       hold on
-       plot([P(Splitt_v(Sp_No),1) P(Splitt_v(Sp_No),1)],[0 max(y_out)],'r')
-       ylabel('y (no. of counts)');
-       title(['Splitter segment: ' num2str(Sp_No)]);
-       grid on
-       subplot(2,1,2)
-       hold off
-       ww_est=scale*pp_est;
-       ok=plot_gmm(mz_out,y_out,ww_est,mu_est,sig_est);
-       ok=fill_red(ww_pp,mu_pp,sig_pp);
-       title(['Splitter: ' num2str(Sp_No)])
-       drawnow
     end
-       
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%% plots
+    % if DRAW==1
+    %    figure(1)
+    %    subplot(2,1,1)
+    %    hold off
+    %    plot(mz_out,y_out,'k')
+    %    hold on
+    %    plot([P(Splitt_v(Sp_No),1) P(Splitt_v(Sp_No),1)],[0 max(y_out)],'r')
+    %    ylabel('y (no. of counts)');
+    %    title(['Splitter segment: ' num2str(Sp_No)]);
+    %    grid on
+    %    subplot(2,1,2)
+    %    hold off
+    %    ww_est=scale*pp_est;
+    %    ok=plot_gmm(mz_out,y_out,ww_est,mu_est,sig_est);
+    %    ok=fill_red(ww_pp,mu_pp,sig_pp);
+    %    title(['Splitter: ' num2str(Sp_No)])
+    %    drawnow
+    % end

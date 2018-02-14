@@ -19,19 +19,19 @@ if seg_min(seg_nb) >= N-h_se;
     seg_nb = seg_nb-1;
 end
 
-if draw
-    disp('Coarse partition completed, result shown in figure 1')
-    disp([num2str(seg_nb) ' segments found.'])
-    figure(1)
-    plot(xx,yy,'k')
-    hold on
-    mmm = max(yy);
-    for a=1:length(seg_min)
-        plot([xx(seg_min(a)),xx(seg_min(a))],[0 mmm],'r')    
-    end
-    title('Coarse partition of m/z axis'); xlabel('m/z')
-    disp('Phase 2: fine allocation of Gaussian components by segments analysis and BIC')
-end
+% if draw
+%     disp('Coarse partition completed, result shown in figure 1')
+%     disp([num2str(seg_nb) ' segments found.'])
+%     figure(1)
+%     plot(xx,yy,'k')
+%     hold on
+%     mmm = max(yy);
+%     for a=1:length(seg_min)
+%         plot([xx(seg_min(a)),xx(seg_min(a))],[0 mmm],'r')
+%     end
+%     title('Coarse partition of m/z axis'); xlabel('m/z')
+%     disp('Phase 2: fine allocation of Gaussian components by segments analysis and BIC')
+% end
 
 seg_min = [1,seg_min,N+1];
 x_temp = cell(1,seg_nb); y_temp = x_temp;

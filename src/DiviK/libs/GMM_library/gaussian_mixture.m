@@ -29,19 +29,19 @@ if min((x(2:N)-x(1:N-1)))<=0; error('Improperly spaced vector x.'); end
 % INPUT CORRECTION IF NECESSARY
 x = x(:); y = y(:);
 
-if draw
-    disp('Input control..... OK')
-    disp('Estimating initial condition for EM algorithm.')
-end
+% if draw
+%     disp('Input control..... OK')
+%     disp('Estimating initial condition for EM algorithm.')
+% end
 
 % poszukiwanie warunkow poczatkowych
 [pp_v, mu_v, sig_v] = find_ic(x,y,draw,gmm_opts);
     
 KS=length(pp_v);
-if draw
-    disp(['Estimation of initial values completed: ' num2str(KS) ' components detected'])
-    disp('Gaussian mixture decomposition by EM algoritm')
-end
+% if draw
+%     disp(['Estimation of initial values completed: ' num2str(KS) ' components detected'])
+%     disp('Gaussian mixture decomposition by EM algoritm')
+% end
 
 if gmm_opts.extra_comp
     extra_nb = round(0.1 * length(pp_v));
@@ -57,16 +57,16 @@ gmm_opts.SW = 0;
 [pp_est,mu_est,sig_est,~,logL,bic] = EM_iter(x,y,pp_v,mu_v,sig_v,draw,gmm_opts);
 orig.alpha = pp_est; orig.mass = mu_est; orig.sig = sig_est;
 orig.logL = logL; orig.bic = bic;
-if draw; 
-    disp(['EM iterations completed: ' num2str(length(pp_est)) ' components']);
-    figure(3)
-    plot_spect_vs_decomp(x,y,pp_est,mu_est,sig_est,1);
-    title(['Original model. No of components detected: ' num2str(length(pp_est))])
-    xlabel('M/Z'); ylabel('Intensity')
-end
+% if draw; 
+%     disp(['EM iterations completed: ' num2str(length(pp_est)) ' components']);
+%     figure(3)
+%     plot_spect_vs_decomp(x,y,pp_est,mu_est,sig_est,1);
+%     title(['Original model. No of components detected: ' num2str(length(pp_est))])
+%     xlabel('M/Z'); ylabel('Intensity')
+% end
 
 if gmm_opts.merge
-    if draw; disp('Merging Gaussian components based on L-inf similarity');end   
+%     if draw; disp('Merging Gaussian components based on L-inf similarity');end
 
     [tol_s_tmp,tol_d_tmp,stats] = par_vec(gmm_opts.tol_s,gmm_opts.tol_d);
     pp = cell(1,stats.iter); mu = pp; sig = pp; logL = pp; bic = pp;

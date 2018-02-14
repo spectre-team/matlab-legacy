@@ -58,13 +58,13 @@ stats.thr_cv = thr;
 stats.del_cv = sum(ind);
 del_cv = del_gmm(gmm,ind);
 
-if draw
-    disp([num2str(stats.del_cv) ' wide components filtered.'])
-    figure; hold on; box on;
-    hist(x,sqrt(length(x))); 
-    if ~eq(thr,Inf); lim = ylim; plot([thr,thr],[0,lim(2)],'k','LineWidth',2); end
-    xlabel('100*sigma/mean'); ylabel('Counts'); title([num2str(stats.del_cv) ' components filtered'])
-end
+% if draw
+%     disp([num2str(stats.del_cv) ' wide components filtered.'])
+%     figure; hold on; box on;
+%     hist(x,sqrt(length(x)));
+%     if ~eq(thr,Inf); lim = ylim; plot([thr,thr],[0,lim(2)],'k','LineWidth',2); end
+%     xlabel('100*sigma/mean'); ylabel('Counts'); title([num2str(stats.del_cv) ' components filtered'])
+% end
 
 
 function gmm = del_gmm(gmm,ind)

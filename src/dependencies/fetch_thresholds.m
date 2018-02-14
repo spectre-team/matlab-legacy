@@ -55,40 +55,40 @@ function [ thresholds ] = fetch_thresholds( params, varargin )
 
 		f = gmm_uborder_fun(best_mu, best_sig, best_a);
 
-		if ~isempty(settings.FigurePath)
-
-			summing = gmm_sum_fun(best_mu,best_sig,best_a);
-			fig = figure;
-			fig.CurrentAxes = axes('Position' , [0.1 0.1 0.8 0.8]);
-			ax = fig.CurrentAxes;
-			set(fig,'Visible','off');
-			hold on
-			hist(ax,param,floor(sqrt(length(param))));
-			[nn,xx] = hist(ax,param,floor(sqrt(length(param))));
-			TIC = (xx(2)-xx(1))*n;
-			xvec=linspace(min(param),max(param),1000);
-			for jj=1:best_compnum,
-				h(1)=plot(ax,xvec,TIC*best_a(jj)*normpdf(xvec,best_mu(jj),best_sig(jj)),'g');
-				set(h(1),'Linewidth',2)
-			end
-			yvec = summing(xvec)*TIC;
-			h(2)=plot(ax,xvec,yvec,'r');
-			set(h(2),'Linewidth',3)
-			xlabel(ax,['Parameter ' num2str(i)])
-			legend(ax,h,{'GMM components';'Final model'})
-			title(ax,['Gaussian Mixture Model, KS = ',num2str(best_compnum)]);
-			hold off
-			if m>1
-				mkfiledir([settings.FigurePath '_param_' num2str(i)]);
-				saveas(fig,[settings.FigurePath '_param_' num2str(i)]);
-			else
-				mkfiledir(settings.FigurePath);
-				saveas(fig,settings.FigurePath);
-			end
-			close gcf
-
-
-		end
+		% if ~isempty(settings.FigurePath)
+        %
+		% 	summing = gmm_sum_fun(best_mu,best_sig,best_a);
+		% 	fig = figure;
+		% 	fig.CurrentAxes = axes('Position' , [0.1 0.1 0.8 0.8]);
+		% 	ax = fig.CurrentAxes;
+		% 	set(fig,'Visible','off');
+		% 	hold on
+		% 	hist(ax,param,floor(sqrt(length(param))));
+		% 	[nn,xx] = hist(ax,param,floor(sqrt(length(param))));
+		% 	TIC = (xx(2)-xx(1))*n;
+		% 	xvec=linspace(min(param),max(param),1000);
+		% 	for jj=1:best_compnum,
+		% 		h(1)=plot(ax,xvec,TIC*best_a(jj)*normpdf(xvec,best_mu(jj),best_sig(jj)),'g');
+		% 		set(h(1),'Linewidth',2)
+		% 	end
+		% 	yvec = summing(xvec)*TIC;
+		% 	h(2)=plot(ax,xvec,yvec,'r');
+		% 	set(h(2),'Linewidth',3)
+		% 	xlabel(ax,['Parameter ' num2str(i)])
+		% 	legend(ax,h,{'GMM components';'Final model'})
+		% 	title(ax,['Gaussian Mixture Model, KS = ',num2str(best_compnum)]);
+		% 	hold off
+		% 	if m>1
+		% 		mkfiledir([settings.FigurePath '_param_' num2str(i)]);
+		% 		saveas(fig,[settings.FigurePath '_param_' num2str(i)]);
+		% 	else
+		% 		mkfiledir(settings.FigurePath);
+		% 		saveas(fig,settings.FigurePath);
+		% 	end
+		% 	close gcf
+        %
+        %
+		% end
 
 		%if there are few components
 		if best_compnum>1

@@ -90,12 +90,12 @@ for i=1:size(spectra,1)
     alignedSpectrum(i,:) = aligned;
 end
 alignedSpectrum = alignedSpectrum';
-if show_bar
-    delete(w);
-    all_pos(all_pos>length(mz)) = [];
-    figure; plot(mz,reference,mz(all_pos),reference(all_pos),'k.')
-    xlabel('M/Z'); ylabel('Intensity'); legend({'Signal','Segment cut'})
-end
+% if show_bar
+%     delete(w);
+%     all_pos(all_pos>length(mz)) = [];
+%     figure; plot(mz,reference,mz(all_pos),reference(all_pos),'k.')
+%     xlabel('M/Z'); ylabel('Intensity'); legend({'Signal','Segment cut'})
+% end
 
 
 % FFT cross-correlation----------------------------------------------------

@@ -26,16 +26,16 @@ function [approximation, index, fig, all_approximations, best] = approximate_by_
 
     best = coverage == max(coverage);
 
-    if make_plot
-    
-        fig = invisible_figure();
-        ax = axes(fig);
-        plot(ax, ...
-            (0:length(labels)) / length(labels), coverage, 'b.', ...
-            find(best) / length(labels), coverage(best), 'r.');
-    
-    end
-    
+    % if make_plot
+    %
+    %     fig = invisible_figure();
+    %     ax = axes(fig);
+    %     plot(ax, ...
+    %         (0:length(labels)) / length(labels), coverage, 'b.', ...
+    %         find(best) / length(labels), coverage(best), 'r.');
+    %
+    % end
+
     all_approximations = approximation;
     best = find(best, 1);
     index = coverage(best);

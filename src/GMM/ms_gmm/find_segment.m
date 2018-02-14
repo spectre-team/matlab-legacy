@@ -22,20 +22,20 @@ idm=find(mz>=mzl & mz<=mzp);
 mz_o=mz(idm);
 y_o=y_bas(idm);
 
-if DRAW==1
-   mzll=max([(mzl-round((mzp-mzl)/5)) mz(1)]);
-   mzpp=min([(mzp+round((mzp-mzl)/5)) mz(length(mz))]);
-   ixmzp=find((mz>mzll) & (mz<mzpp));
-   mz_o_p=mz(ixmzp);
-   y_o_p=y_bas(ixmzp);
-   figure(2)
-   subplot(3,1,1)
-   hold off
-   plot(mz_o_p,y_o_p,'k')
-   hold on
-   title('Splitters')
-   grid on
-end
+% if DRAW==1
+%    mzll=max([(mzl-round((mzp-mzl)/5)) mz(1)]);
+%    mzpp=min([(mzp+round((mzp-mzl)/5)) mz(length(mz))]);
+%    ixmzp=find((mz>mzll) & (mz<mzpp));
+%    mz_o_p=mz(ixmzp);
+%    y_o_p=y_bas(ixmzp);
+%    figure(2)
+%    subplot(3,1,1)
+%    hold off
+%    plot(mz_o_p,y_o_p,'k')
+%    hold on
+%    title('Splitters')
+%    grid on
+% end
 
 pyl=0*mz_o;
 if ksp>0

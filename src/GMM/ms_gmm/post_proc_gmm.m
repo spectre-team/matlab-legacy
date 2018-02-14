@@ -111,21 +111,21 @@ if opts.draw; disp([num2str(sum(ind_del)) ' components filtered.']); end
 %find filtered model
 mdl_proc = del_gmm(mdl,ind_del);
 
-if opts.draw
-    figure; subplot(2,1,1)
-    hist(x,round(sqrt(length(x)))); 
-    if opts.log; 
-        xlabel(['Log(' name ')']);
-        title(['Log ' name ' filter. ' num2str(mdl_proc.KS) ' peaks left.' num2str(mdl.KS-mdl_proc.KS) ' removed.'])
-    else
-        xlabel(name); 
-        title([name ' filter. ' num2str(mdl_proc.KS) ' peaks left.' num2str(mdl.KS-mdl_proc.KS) ' removed.'])
-    end
-    ylabel('Counts')
-    if ~isempty(thr); hold on; plot([thr_filt,thr_filt],ylim,'r'); end
-    
-    subplot(2,1,2); plot_gmm(mz,y,mdl_proc.w,mdl_proc.mu,mdl_proc.sig);
-end
+% if opts.draw
+%     figure; subplot(2,1,1)
+%     hist(x,round(sqrt(length(x))));
+%     if opts.log;
+%         xlabel(['Log(' name ')']);
+%         title(['Log ' name ' filter. ' num2str(mdl_proc.KS) ' peaks left.' num2str(mdl.KS-mdl_proc.KS) ' removed.'])
+%     else
+%         xlabel(name);
+%         title([name ' filter. ' num2str(mdl_proc.KS) ' peaks left.' num2str(mdl.KS-mdl_proc.KS) ' removed.'])
+%     end
+%     ylabel('Counts')
+%     if ~isempty(thr); hold on; plot([thr_filt,thr_filt],ylim,'r'); end
+%
+%     subplot(2,1,2); plot_gmm(mz,y,mdl_proc.w,mdl_proc.mu,mdl_proc.sig);
+% end
 
 function mdl = del_gmm(mdl,ind)
 mdl.w = mdl.w(~ind);
@@ -303,24 +303,24 @@ stats.sigma = sigma;
 stats.logL = L_old;
 
 %drawing results
-if draw
-    disp('After EM:')
-    disp(num2str([alpha; mi; sigma]))
-    disp(['Iterations: ' num2str(it) ' Stop crit: ' num2str(abs(L_new - L_old))])
-    
-    figure; hold on; box on
-    bar(x,n,[min(xvec) max(xvec)],'hist');
-    plot(x_temp',mean(diff(x))*N*sum(f_temp./repmat(step_x_temp,1,K),2),'b.');
-    colors(1:K_noise) = 'r'; colors(K_noise+1:K) = 'g'; 
-    for a=1:K
-        plot(x_temp',mean(diff(x))*N*f_temp(:,a)./step_x_temp,colors(a));
-    end
-    plot(temp2,zeros(1,K-1),'r.')
-    title('After EM')
-    lines = findobj(gca,'Type','Line');
-    set(lines,'LineWidth',2)
-    set(get(gca,'Ylabel'),'FontSize',14)
-end
+% if draw
+%     disp('After EM:')
+%     disp(num2str([alpha; mi; sigma]))
+%     disp(['Iterations: ' num2str(it) ' Stop crit: ' num2str(abs(L_new - L_old))])
+%
+%     figure; hold on; box on
+%     bar(x,n,[min(xvec) max(xvec)],'hist');
+%     plot(x_temp',mean(diff(x))*N*sum(f_temp./repmat(step_x_temp,1,K),2),'b.');
+%     colors(1:K_noise) = 'r'; colors(K_noise+1:K) = 'g';
+%     for a=1:K
+%         plot(x_temp',mean(diff(x))*N*f_temp(:,a)./step_x_temp,colors(a));
+%     end
+%     plot(temp2,zeros(1,K-1),'r.')
+%     title('After EM')
+%     lines = findobj(gca,'Type','Line');
+%     set(lines,'LineWidth',2)
+%     set(get(gca,'Ylabel'),'FontSize',14)
+% end
 
 function y = normpdf(x,mu,sigma)
 y = exp(-0.5 * ((x - mu)./sigma).^2) ./ (sqrt(2*pi) .* sigma);
