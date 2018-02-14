@@ -71,7 +71,7 @@ if gmm_opts.merge
     [tol_s_tmp,tol_d_tmp,stats] = par_vec(gmm_opts.tol_s,gmm_opts.tol_d);
     pp = cell(1,stats.iter); mu = pp; sig = pp; logL = pp; bic = pp;
     if draw; parfor_progress(stats.iter); end;
-    parfor a=1:stats.iter
+    for a=1:stats.iter
         [pp_tmp,mu_tmp,sig_tmp] = merging(pp_est,mu_est,sig_est,tol_s_tmp(a),tol_d_tmp(a));
         [pp{a},mu{a},sig{a},~,logL{a},bic{a}] = EM_iter(x,y,pp_tmp,mu_tmp,sig_tmp,0,gmm_opts);
         if draw; parfor_progress; end

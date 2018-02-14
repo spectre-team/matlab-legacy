@@ -37,8 +37,7 @@ function [ thresholds ] = fetch_thresholds( params, varargin )
 		TIC = cell(1,max_components_number);
 		BIC = Inf*ones(1,max_components_number);
 		param = params(:,i);
-		parfor compnum=1:max_components_number
-% 		for compnum=1:max_components_number
+		for compnum=1:max_components_number
 			try
 				[a{compnum},mu{compnum},sig{compnum},TIC{compnum},l_lik]=cacher(@gaussian_mixture_simple,{param,ones(n,1),compnum},'CachePath',settings.CachePath,'Enabled',settings.Cache);
 				BIC(compnum) = -2*l_lik+(3*compnum-1)*log(n);

@@ -34,7 +34,7 @@ function dist = array_result(fun,v1,v2)
 	dist = NaN(nv1,nv2);
 	for i = 1:nv1
 		v = v1(:,i);
-		parfor j=1:nv2
+		for j=1:nv2
 			dist(i,j) = fun(v,v2(:,j)); %#ok<PFBNS>
 		end
 	end

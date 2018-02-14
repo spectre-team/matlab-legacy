@@ -47,9 +47,9 @@ function labels = sort_labels_descending_by_index(labeling, is_ground_truth, ind
 
     labels = unique(labeling);
     score = NaN(size(labels));
-    
-    parfor i=1:length(labels)
         
+    for i=1:length(labels)
+
         cluster_selector = (labeling == labels(i));
         score(i) = feval(index, cluster_selector, is_ground_truth);
         

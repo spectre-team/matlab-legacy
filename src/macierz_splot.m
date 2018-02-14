@@ -4,7 +4,7 @@ sig=mdl.sig;
 KS=mdl.KS;
 
 s=zeros(KS,size(wid_norm,2));
-parfor i=1:size(wid_norm,2);
+for i=1:size(wid_norm,2);
     y=wid_norm(:,i);
     for kks=1:KS
         y_gmm=w(kks)*normpdf(mz,mu(kks),sig(kks));

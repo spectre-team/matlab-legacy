@@ -41,7 +41,7 @@ mu_mx_1=zeros(KSP,Buf_size_split_Par);
 ww_mx_1=zeros(KSP,Buf_size_split_Par);
 sig_mx_1=zeros(KSP,Buf_size_split_Par);
 
-parfor kk=1:KSP   
+for kk=1:KSP
 %     disp(['Split Progress: ' num2str(kk) ' of ' num2str(KSP)]);
     % Gaussian mixture decomposition of the splitting segment
     [ww_pick,mu_pick,sig_pick]=gmm_decomp_split_segment(mz,y_bas,Splitt_v,seg_vec_c,P,Par_mcv,kk); 
@@ -60,7 +60,7 @@ KSP1=KSP+1;
 mu_mx_2=zeros(KSP1,Buf_size_seg_Par);
 ww_mx_2=zeros(KSP1,Buf_size_seg_Par);
 sig_mx_2=zeros(KSP1,Buf_size_seg_Par);
-parfor ksp=1:KSP1    
+for ksp=1:KSP1
 %    disp(['Seg Progress: ' num2str(ksp) ' of ' num2str(KSP1)]);
    [ww_out,mu_out,sig_out]=gmm_decomp_segment1(mz,y_bas,ww_mx_1,mu_mx_1,sig_mx_1,P,Splitt_v,Par_mcv,ksp-1);
    mu_mx_2(ksp,:)=mu_out;

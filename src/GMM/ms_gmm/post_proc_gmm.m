@@ -70,7 +70,7 @@ thr = inf(1,max_KS*rep_no); bic = thr;
 alpha = cell(1,max_KS); %K_noise = thr; 
 [KS,~,stats_vec] = par_vec(1:max_KS,1:rep_no);
 
-parfor a=1:stats_vec.iter
+for a=1:stats_vec.iter
     [thr(a),bic(a),stats_tmp] = gauss_rem(x_out, KS(a),0,0);
 %     K_noise(a) = stats_tmp.K_noise;
     alpha{a} = stats_tmp.alpha;

@@ -42,7 +42,7 @@ end
 
 gmm_opts.eps_change = 1e-4;
 pp_list = cell(1,seg_nb); mu_list = pp_list; sig_list = pp_list; K_list = zeros(1,seg_nb);
-parfor a=1:seg_nb
+for a=1:seg_nb
     gmm_opts_tmp = gmm_opts;
     % warp down  
     [x_temp_new,y_temp_new] = warp_down(x_temp{a},y_temp{a});
