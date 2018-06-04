@@ -65,7 +65,7 @@ function [ww_pick,mu_pick,sig_pick]=gmm_decomp_split_segment(mz,y_bas,Splitt_v,s
       PAR_penet=min([Penet_Par_1 floor((mz_out(N)-mz_out(1))/PAR_sig_min)]);
       kpen=0;
   
-      aux_mx=dyn_pr_split_w_aux(mz_out_b,y_out_b,QFPAR,PAR_sig_min);    
+      aux_mx=dyn_pr_split_w_aux1(mz_out_b,y_out_b,QFPAR,PAR_sig_min);    
       while KS <= 2*(KSmin+PAR_penet) 
           KS=KS+1;
           kpen=kpen+1;
@@ -74,7 +74,7 @@ function [ww_pick,mu_pick,sig_pick]=gmm_decomp_split_segment(mz,y_bas,Splitt_v,s
                  break
            end
           
-          [Q,opt_part]=dyn_pr_split_w(mz_out_b,y_out_b,KS-1,aux_mx,QFPAR,PAR_sig_min);
+          [Q,opt_part]=dyn_pr_split_w1(mz_out_b,y_out_b,KS-1,aux_mx,QFPAR,PAR_sig_min);
           part_cl=[1 opt_part Nb+1]; 
                
           % set initial cond
