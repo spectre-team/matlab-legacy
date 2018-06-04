@@ -71,11 +71,11 @@ Penet_Par_2=30;
 
 % Buf_size_split_Par - size of the buffer for computing GMM paramters of
 % splitters
-Buf_size_split_Par=10;
+Buf_size_split_Par=20;
 
 % Buf_size_seg_Par - size of the buffer for computing GMM paramters of
 % segments
-Buf_size_seg_Par=30;
+Buf_size_seg_Par=60;
 
 % eps_Par - parameter for EM iterations - tolerance for mixture parameters
 % change
