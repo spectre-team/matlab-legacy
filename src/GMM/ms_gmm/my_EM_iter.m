@@ -66,7 +66,13 @@ while change > eps_change;
     end
 
     denpss=ppoc*pssmac;
-    denpss = max(min(denpss(denpss>0)),denpss);
+    % ensure nonzero probabilities
+    nonzeros = denpss(denpss>0);
+    if ~isempty(nonzeros)
+        denpss = max(min(nonzeros),denpss);
+    else
+        denpss = max(eps, denpss); % potentially realmin
+    end
     for kk=1:KS
        macwwwpom=((ppoc(kk)*pssmac(kk,:)).*y')./denpss;
        denom=sum(macwwwpom);
