@@ -14,6 +14,10 @@ function mdl = estimate_gmm(mz, data)
 
     mdl = ms_gmm_run1(mz,meanspec,opts);
 
-    mdl.meanspec = meanspec;
+    for i = 1:length(mdl)
+        
+        mdl{i}.meanspec = meanspec;
+        
+    end
 
 end
