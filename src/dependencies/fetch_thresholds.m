@@ -12,6 +12,8 @@ function [ thresholds ] = fetch_thresholds( params, varargin )
 %	- 'MaxComponents' - (default 10)
 %	- 'CachePath' - (default '.')
 %	- 'Cache' - default false - no cache is created.
+%   - 'DisableWarnings' - default false - states whether a warning will be
+%   issued on decomposition failure
 %	- 'FigurePath' - decomposition plot is saved (default empty - no figure
 %	is plotted)
 %	- 'Threshold' - returns only thresholds associated with components of
@@ -42,7 +44,9 @@ function [ thresholds ] = fetch_thresholds( params, varargin )
 				[a{compnum},mu{compnum},sig{compnum},TIC{compnum},l_lik]=cacher(@gaussian_mixture_simple,{param,ones(n,1),compnum},'CachePath',settings.CachePath,'Enabled',settings.Cache);
 				BIC(compnum) = -2*l_lik+(3*compnum-1)*log(n);
             catch
-				warning(['Failed to decompose ' num2str(i) '. parameter into ' num2str(compnum) ' components.']);
+                if ~settings.DisableWarnings
+                    warning(['Failed to decompose ' num2str(i) '. parameter into ' num2str(compnum) ' components.']);
+                end
 			end
 		end
 
@@ -125,6 +129,7 @@ function settings = set_defaults()
 	settings.MaxComponents = 10;
     settings.Cache = false;
 	settings.CachePath = '.';
+    settings.DisableWarnings = false;
 	settings.FigurePath = '';
 	settings.Threshold = 0;
 end
