@@ -49,6 +49,11 @@ function [ thresholds ] = fetch_thresholds( params, varargin )
                 end
 			end
 		end
+        
+        if isinf(min(BIC))
+            thresholds{i} = [];
+            continue;
+        end
 
 		best_compnum = find(BIC == min(BIC),1);
 		best_mu = mu{best_compnum};
