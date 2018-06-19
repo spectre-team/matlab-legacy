@@ -37,7 +37,11 @@ N=length(sample);
 % OK oceniamy iteracyjnie wg wzorow z artykulu Bilmsa
 pssmac=zeros(KS,N);
 change=1;
-while change > 1.5e-4;
+rescue_iterations_count = 0;
+unreachable_number_of_iterations = 10000;
+
+while change > 1.5e-4 && rescue_iterations_count < unreachable_number_of_iterations
+   rescue_iterations_count = rescue_iterations_count + 1;
    oldppoc=ppoc;
    oldsigvoc=sigvoc;
    
@@ -62,8 +66,7 @@ while change > 1.5e-4;
  
    %
    change=sum(abs(ppoc-oldppoc))+sum(abs(sigvoc-oldsigvoc))/KS;
-end      
-
+end
 
 % compute likelihood
 l_lik=sum(log(sum(pssmac,1))); 
