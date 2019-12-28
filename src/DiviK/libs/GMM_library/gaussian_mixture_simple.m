@@ -34,7 +34,8 @@ if KS==1,
 	l_lik=NaN;	
 else
      Nb=floor(sqrt(length(x)));
-     [y_out,mz_out]=hist(x,Nb);
+     [y_out,edges]=histcounts(x,Nb);
+     mz_out = mean([edges(1:end-1); edges(2:end)], 1);
     
      aux_mx=dyn_pr_split_w_aux(mz_out,y_out);    
 
