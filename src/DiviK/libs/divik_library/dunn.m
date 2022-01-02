@@ -35,17 +35,17 @@ function value = dunn( data, partition, metric_name )
 			query = partition==i;
 			ccache{i} = cache(query,query);
 		end
-		parfor c_num=1:K
+		for c_num=1:K
 			intracluster_distances(c_num) = max(max(ccache{c_num}));
 		end
 	%RADIUS
 	elseif strcmp(intracluster_metric,'Radius')
-		parfor c_num=1:K
+		for c_num=1:K
 			intracluster_distances(c_num) = max(any_dist(metric_name,clusters{c_num},centers(:,c_num)));
 		end
 	%MEAN RADIUS
 	elseif strcmp(intracluster_metric,'MeanRadius')
-		parfor c_num=1:K
+		for c_num=1:K
 			cluster = clusters{c_num};
 			center = centers(:,c_num);
 			intracluster_distances(c_num) = mean(any_dist(metric_name,cluster,center));

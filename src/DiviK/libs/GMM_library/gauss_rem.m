@@ -96,23 +96,23 @@ stats.K = K;
 stats.K_noise = K_noise;
 
 %drawing results
-if draw
-    disp('After EM:')
-    disp(num2str([alpha; mi; sigma]))
-   
-    figure; hold on; box on
-    bar(x,n,[min(xvec) max(xvec)],'hist');
-    plot(x_temp',mean(diff(x))*N*sum(f_temp,2),'b.');
-    colors(1:K_noise) = 'r'; colors(K_noise+1:K) = 'g'; 
-    for a=1:K
-        plot(x_temp',mean(diff(x))*N*f_temp(:,a),colors(a));
-    end
-    plot(temp2,zeros(1,K-1),'r.')
-    title('After EM')
-    lines = findobj(gca,'Type','Line');
-    set(lines,'LineWidth',2)
-    set(get(gca,'Ylabel'),'FontSize',14)
-end
+% if draw
+%     disp('After EM:')
+%     disp(num2str([alpha; mi; sigma]))
+%
+%     figure; hold on; box on
+%     bar(x,n,[min(xvec) max(xvec)],'hist');
+%     plot(x_temp',mean(diff(x))*N*sum(f_temp,2),'b.');
+%     colors(1:K_noise) = 'r'; colors(K_noise+1:K) = 'g';
+%     for a=1:K
+%         plot(x_temp',mean(diff(x))*N*f_temp(:,a),colors(a));
+%     end
+%     plot(temp2,zeros(1,K-1),'r.')
+%     title('After EM')
+%     lines = findobj(gca,'Type','Line');
+%     set(lines,'LineWidth',2)
+%     set(get(gca,'Ylabel'),'FontSize',14)
+% end
 
 function y = normpdf(x,mu,sigma)
 y = exp(-0.5 * ((x - mu)./sigma).^2) ./ (2.506628274631 .* sigma);

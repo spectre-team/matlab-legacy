@@ -10,7 +10,7 @@ Q=zeros(1,K_gr);
 N=length(data);
 p_opt_idx=zeros(1,N);
 p_aux=zeros(1,N);
-opt_pals=zeros(K_gr,N);
+opt_pals=ones(K_gr,N);
 for kk=1:N;
     p_opt_idx(kk)=my_qu_ix_w(data(kk:N),ygreki(kk:N));
 end

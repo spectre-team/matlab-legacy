@@ -1,5 +1,5 @@
 % EM iterations 
-function [ppsort,musort,sigsort,l_lik] = g_mix_est_fast_lik(sample,KS,muv,sigv,pp)
+function [ppsort,musort,sigsort,l_lik] = g_mix_est_fast_lik(raw_sample,KS,muv,sigv,pp)
 % input data:
 % sample - vector of observations
 % muv,sigv,pp - initial values of mixture parameters
@@ -9,26 +9,12 @@ function [ppsort,musort,sigsort,l_lik] = g_mix_est_fast_lik(sample,KS,muv,sigv,p
 
 min_sg=0.1;
 
-mivoc=muv;
-sigvoc=max(sigv.^2, min_sg^2);
-ppoc=pp;
+raw_sigvoc=max(sigv.^2, min_sg^2);
 
-% make vectors verticsl
-if size(sample,1) > 1
-    sample=sample';
-end
-
-if size(mivoc,2) > 1
-    mivoc=mivoc';
-end
-
-if size(sigvoc,2) > 1
-    sigvoc=sigvoc';
-end
-
-if size(ppoc,2) > 1
-    ppoc=ppoc';
-end
+sample = raw_sample(:)';
+mivoc = muv(:);
+sigvoc = raw_sigvoc(:);
+ppoc = pp(:);
 
 
 
@@ -37,7 +23,11 @@ N=length(sample);
 % OK oceniamy iteracyjnie wg wzorow z artykulu Bilmsa
 pssmac=zeros(KS,N);
 change=1;
-while change > 1.5e-4;
+rescue_iterations_count = 0;
+unreachable_number_of_iterations = 10000;
+
+while change > 1.5e-4 && rescue_iterations_count < unreachable_number_of_iterations
+   rescue_iterations_count = rescue_iterations_count + 1;
    oldppoc=ppoc;
    oldsigvoc=sigvoc;
    
@@ -62,8 +52,7 @@ while change > 1.5e-4;
  
    %
    change=sum(abs(ppoc-oldppoc))+sum(abs(sigvoc-oldsigvoc))/KS;
-end      
-
+end
 
 % compute likelihood
 l_lik=sum(log(sum(pssmac,1))); 

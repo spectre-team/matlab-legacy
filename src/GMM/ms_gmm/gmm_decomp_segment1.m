@@ -149,14 +149,14 @@ else
        end
     end
 
-     if DRAW==1
-          figure(2)
-          subplot(3,1,3)
-          hold off
-          ok=plot_res_new_scale(mz_out,y_out,pp_est*scale,mu_est,sig_est);
-          xlabel(['Segment: '  num2str(Fr_No)  '     KS= ' num2str(length(pp_est))])
-          drawnow
-     end
+     % if DRAW==1
+     %      figure(2)
+     %      subplot(3,1,3)
+     %      hold off
+     %      ok=plot_res_new_scale(mz_out,y_out,pp_est*scale,mu_est,sig_est);
+     %      xlabel(['Segment: '  num2str(Fr_No)  '     KS= ' num2str(length(pp_est))])
+     %      drawnow
+     % end
 
      ww_o=pp_est*scale;
      mu_o=mu_est;

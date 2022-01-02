@@ -66,23 +66,32 @@ for i=1:size(spectra,1)
     startpos = 1;
     aligned =[];
     while startpos <= length(spectra)
-        scale_seg = (segSize_perc * 0.01)/(mz(startpos+1)-mz(startpos));
+        if startpos == length(spectra)
+            scale_seg = (segSize_perc * 0.01)/(mz(startpos)-mz(startpos-1));  % GM: New corner case
+        else
+            scale_seg = (segSize_perc * 0.01)/(mz(startpos+1)-mz(startpos));
+        end
         segSize = round(scale_seg*mz(startpos));
         endpos=startpos+(segSize*2);
         if endpos >=length(spectra)
             samseg = spectra(i,startpos:length(spectra));
             refseg = reference(1,startpos:length(spectra));
         else
-            samseg = spectra(i,startpos+segSize:endpos-1);
-            refseg = reference(1,startpos+segSize:endpos-1);
+            samseg = spectra(i,startpos+segSize:max(endpos-1, startpos+segSize));  % GM: added max
+            refseg = reference(1,startpos+segSize:max(endpos-1, startpos+segSize));  % GM: added max
             minpos = findMin(samseg,refseg);
             endpos = startpos+minpos+segSize;
             samseg = spectra(i,startpos:endpos);
             refseg = reference(1,startpos:endpos);
         end
         all_pos = [all_pos,endpos];
-        scale_shift = (shift_perc * 0.01)/(mz(startpos+1)-mz(startpos));
-        shift = round(scale_shift*mz(startpos+round(length(samseg)/2)));
+        if startpos == length(spectra)
+            scale_shift = (shift_perc * 0.01)/(mz(startpos)-mz(startpos-1));  % GM: New corner case
+        else
+            scale_shift = (shift_perc * 0.01)/(mz(startpos+1)-mz(startpos));
+        end
+        mzs_index = min(startpos+round(length(samseg)/2), length(mz));  % GM: New corner case
+        shift = round(scale_shift*mz(mzs_index));
         lag = FFTcorr(samseg,refseg,shift);
         aligned = [aligned,move(samseg,lag)];
         startpos = endpos+1;
@@ -90,12 +99,12 @@ for i=1:size(spectra,1)
     alignedSpectrum(i,:) = aligned;
 end
 alignedSpectrum = alignedSpectrum';
-if show_bar
-    delete(w);
-    all_pos(all_pos>length(mz)) = [];
-    figure; plot(mz,reference,mz(all_pos),reference(all_pos),'k.')
-    xlabel('M/Z'); ylabel('Intensity'); legend({'Signal','Segment cut'})
-end
+% if show_bar
+%     delete(w);
+%     all_pos(all_pos>length(mz)) = [];
+%     figure; plot(mz,reference,mz(all_pos),reference(all_pos),'k.')
+%     xlabel('M/Z'); ylabel('Intensity'); legend({'Signal','Segment cut'})
+% end
 
 
 % FFT cross-correlation----------------------------------------------------
@@ -119,6 +128,8 @@ R=X.*conj(Y);
 R=R./(M);
 rev=ifft(R);
 vals=real(rev);
+
+
 maxpos = 1;
 maxi = -1;
 if M<shift

@@ -49,29 +49,29 @@ if opts.if_rem
         thr_h = max(height(idxl_h));
     end
 
-    if opts.draw
-%         figure; subplot(2,1,1)
-%         if sum(idx_a) > opts.thr
-%             hist(area,sqrt(mdl.KS)); xlabel('Area under the peak'); ylabel('Counts')
-%             if ~isempty(thr_a); hold on; plot([thr_a,thr_a],ylim,'r'); end
-%         else
-%             hist(log(area),sqrt(mdl.KS)); xlabel('Log(Area under the peak)'); ylabel('Counts')
-%             if ~isempty(thr_a); hold on; plot([log(thr_a),log(thr_a)],ylim,'r'); end
-%         end
-%         title([num2str(mdl_area.KS) ' peaks left.' num2str(mdl.KS-mdl_area.KS) ' removed.'])
-%         subplot(2,1,2); plot_gmm(mz,y,mdl_area.w,mdl_area.mu,mdl_area.sig);
-
-        figure; subplot(2,1,1)
-        if sum(idx_h) > Inf
-            hist(height,sqrt(mdl.KS)); xlabel('Peak height'); ylabel('Counts')
-            if ~isempty(thr_h); hold on; plot([thr_h,thr_h],ylim,'r'); end
-        else
-            hist(log(height),sqrt(mdl.KS)); xlabel('Log(Peak height)'); ylabel('Counts')
-            if ~isempty(thr_h); hold on; plot([log(thr_h),log(thr_h)],ylim,'r'); end
-        end
-        title([num2str(mdl_height.KS) ' peaks left.' num2str(mdl.KS-mdl_height.KS) ' removed.'])
-        subplot(2,1,2); plot_gmm(mz,y,mdl_height.w,mdl_height.mu,mdl_height.sig);
-    end
+    % if opts.draw
+    %     figure; subplot(2,1,1)
+    %     if sum(idx_a) > opts.thr
+    %         hist(area,sqrt(mdl.KS)); xlabel('Area under the peak'); ylabel('Counts')
+    %         if ~isempty(thr_a); hold on; plot([thr_a,thr_a],ylim,'r'); end
+    %     else
+    %         hist(log(area),sqrt(mdl.KS)); xlabel('Log(Area under the peak)'); ylabel('Counts')
+    %         if ~isempty(thr_a); hold on; plot([log(thr_a),log(thr_a)],ylim,'r'); end
+    %     end
+    %     title([num2str(mdl_area.KS) ' peaks left.' num2str(mdl.KS-mdl_area.KS) ' removed.'])
+    %     subplot(2,1,2); plot_gmm(mz,y,mdl_area.w,mdl_area.mu,mdl_area.sig);
+    %
+    %     figure; subplot(2,1,1)
+    %     if sum(idx_h) > Inf
+    %         hist(height,sqrt(mdl.KS)); xlabel('Peak height'); ylabel('Counts')
+    %         if ~isempty(thr_h); hold on; plot([thr_h,thr_h],ylim,'r'); end
+    %     else
+    %         hist(log(height),sqrt(mdl.KS)); xlabel('Log(Peak height)'); ylabel('Counts')
+    %         if ~isempty(thr_h); hold on; plot([log(thr_h),log(thr_h)],ylim,'r'); end
+    %     end
+    %     title([num2str(mdl_height.KS) ' peaks left.' num2str(mdl.KS-mdl_height.KS) ' removed.'])
+    %     subplot(2,1,2); plot_gmm(mz,y,mdl_height.w,mdl_height.mu,mdl_height.sig);
+    % end
 else
     mdl_area = mdl;
     mdl_height = mdl;

@@ -51,8 +51,8 @@ function [partition, thresholds] = gmm_segmentation( data, varargin )
 	end
 	
 	partition = ones(size(data));
-	
-	parfor i = 1:length(thresholds)
+
+	for i = 1:length(thresholds)
 		t = thresholds{i};
 		if ~isempty(t)
 			row = partition(i,:)*length(t);

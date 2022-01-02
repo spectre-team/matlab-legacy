@@ -26,16 +26,16 @@ function [approximation, index, fig, all_approximations, best] = approximate_by_
 
     best = coverage == max(coverage);
 
-    if make_plot
-    
-        fig = invisible_figure();
-        ax = axes(fig);
-        plot(ax, ...
-            (0:length(labels)) / length(labels), coverage, 'b.', ...
-            find(best) / length(labels), coverage(best), 'r.');
-    
-    end
-    
+    % if make_plot
+    %
+    %     fig = invisible_figure();
+    %     ax = axes(fig);
+    %     plot(ax, ...
+    %         (0:length(labels)) / length(labels), coverage, 'b.', ...
+    %         find(best) / length(labels), coverage(best), 'r.');
+    %
+    % end
+
     all_approximations = approximation;
     best = find(best, 1);
     index = coverage(best);
@@ -47,9 +47,9 @@ function labels = sort_labels_descending_by_index(labeling, is_ground_truth, ind
 
     labels = unique(labeling);
     score = NaN(size(labels));
-    
-    parfor i=1:length(labels)
         
+    for i=1:length(labels)
+
         cluster_selector = (labeling == labels(i));
         score(i) = feval(index, cluster_selector, is_ground_truth);
         
